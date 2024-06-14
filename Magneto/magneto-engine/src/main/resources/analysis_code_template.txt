@@ -1,8 +1,8 @@
 In the provided code snippet, <%s> function takes inputs of %s, and it calls <%s> function.
 The objective is to set the fields of the receiver object and the arguments for <%s> to ensure that
 <%s> function is invoked with
-%s
-Note that %s is just a list of symbol representing the arguments of <%s>. You should use these symbols for code analysis.
+%s by <RO>
+Note that %s and <RO> is just a list of symbol representing the arguments and receiver object of <%s>. You should use these symbols for code analysis.
 Only need to return a JSON body, which is a key-value mapping, representing the values corresponding to the fields or input parameters. the JSON body schema describe below:
 {
   "FieldProperties": {
