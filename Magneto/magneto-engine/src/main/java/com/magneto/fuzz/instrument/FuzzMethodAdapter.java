@@ -69,22 +69,22 @@ public class FuzzMethodAdapter extends GeneratorAdapter implements Opcodes {
     @Override
     public void visitMaxs(int maxStack, int maxLocals) {
         if (mv != null) {
-            // must visit first
-            super.visitMaxs(maxStack + 1, maxLocals);
-
-            // (2) endLabel
+            // (1) endLabel
             super.visitLabel(endLabel);
 
-            // (3) handlerLabel
+            // (2) handlerLabel
             super.visitLabel(handlerLabel);
             int localIndex = getLocalIndex();
             super.visitVarInsn(ASTORE, localIndex);
 
-            // handle the throwable
+            // (3) handle the throwable
             this.onCatchThrowable(localIndex);
 
             // (4) visitTryCatchBlock
             super.visitTryCatchBlock(startLabel, endLabel, handlerLabel, "java/lang/Throwable");
+
+            // (5) must visit at end
+            super.visitMaxs(maxStack, maxLocals);
         }
     }
 
